@@ -11,31 +11,29 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.aula.blog.model.validators.ContactNumberConstraint;
 
 @Entity(name = "tbl_post")
 public class Post implements Serializable {
 
 	
-
-	private static final long serialVersionUID = 1L;
-
 	@Id
-	@SequenceGenerator(name = "post_seq", sequenceName = "post_seq")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "post_seq")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@Column(nullable = false, length = 50)
-	@NotBlank(message = "Autor é uma informação obrigatória.")
+	@NotNull(message = "Autor é uma informação obrigatória.")
 	private String autor;
 	
 	@Column(nullable = false, length = 150)
-	@NotBlank(message = "Título é uma informação obrigatória.")
+	@NotNull(message = "Título é uma informação obrigatória.")
+	@ContactNumberConstraint
 	private String titulo;
 	
 	@Column(nullable = false, length = 2000)
-	@NotBlank(message = "Texto é uma informação obrigatória.")
+	@NotNull(message = "Texto é uma informação obrigatória.")
 	private String texto;
 	
 	@Column(nullable = false)
@@ -85,7 +83,4 @@ public class Post implements Serializable {
 		this.data = data;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
 }

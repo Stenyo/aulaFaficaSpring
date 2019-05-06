@@ -28,9 +28,10 @@ public class PostController {
 	
 	@GetMapping("/add")
 	public ModelAndView add(Post post) {
-		
+	
 		ModelAndView mv = new ModelAndView("/postAdd");
 		mv.addObject("post", post);
+		mv.addObject("stringTeste", "asd");
 		
 		return mv;
 	}
