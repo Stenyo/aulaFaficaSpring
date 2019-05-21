@@ -27,10 +27,12 @@ public class Post implements Serializable {
 	@NotNull(message = "Autor é uma informação obrigatória.")
 	private String autor;
 	
+	//@ContactNumberConstraint aplicar validacao personalizada
+	
 	@Column(nullable = false, length = 150)
 	@NotNull(message = "Título é uma informação obrigatória.")
-	@ContactNumberConstraint
 	private String titulo;
+	
 	
 	@Column(nullable = false, length = 2000)
 	@NotNull(message = "Texto é uma informação obrigatória.")
